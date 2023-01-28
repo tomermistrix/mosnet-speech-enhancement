@@ -25,11 +25,11 @@ mos_model = MOSNet(device=device)
 mos_model.load_state_dict(torch.load(weights_path))
 mos_model.eval()
 
-# Load audio sample and estimate MOS:
+# Load speech audio sample:
 speech_path = "sample.wav"
 y, _ = sf.read(speech_path)
 
-# Feed to model and estimate MOS:
+# Feed speech audio sample to model and estimate MOS:
 with torch.no_grad():
     y_in = torch.from_numpy(y).unsqueeze(0).to(device)
     mos_average, mos_per_frame = mos_model(y_in)
@@ -54,7 +54,7 @@ weights_path = "mosnet16_torch.pt"
 criterion = MOSNetLoss(weights_path, device=device)
 ```
 
-## Audio Samples
+## Perceptual Speech Enhancement - Audio Samples
 
 Coming soon
 
