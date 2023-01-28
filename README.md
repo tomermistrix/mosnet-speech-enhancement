@@ -6,7 +6,7 @@ PyTorch implementation of our paper: [Differentiable Mean Opinion Score Regulari
 
 ### MOS Estimation
 
-Initialize the MOSNet model, load the pretrained weights and estimate MOS of a speech audio sample:
+Initialize the MOSNet model, load the pretrained weights and estimate MOS of a speech audio sample sampled at 16kHz:
 
 ```python
 import numpy as np
@@ -14,7 +14,7 @@ import torch
 import soundfile as sf
 from mosnet import MOSNet
 
-# Set some parameters:
+# Set device:
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Set path of trained weights:
@@ -44,9 +44,8 @@ Initialize a criterion that can be employed into any deep-learning-based trainin
 import torch
 from mosnet import MOSNetLoss
 
-# Set some parameters:
+# Set device:
 device = "cuda" if torch.cuda.is_available() else "cpu"
-sr = 16000
 
 # Set path of trained weights:
 weights_path = "mosnet16_torch.pt"
