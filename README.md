@@ -4,8 +4,12 @@ PyTorch implementation of our paper: [Differentiable Mean Opinion Score Regulari
 
 ## Usage
 
+Example how to initialize the MOSNet model, load the pretrained weights and estimate MOS ratings of some audio samples:
+
 ```python
-import mosnet
+from mosnet import MOSNet
+
+
 ```
 
 ## Citation
