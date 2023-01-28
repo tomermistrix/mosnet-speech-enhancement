@@ -140,6 +140,7 @@ class MOSNetLoss(nn.Module):
         self.mosnet.train().to(device)
     
     def ftrLoss(self, x, ref):
+        # Compute L1 loss on feature maps:
         ftrs_x = self.mosnet.getFtrMaps(x)
         ftrs_ref = self.mosnet.getFtrMaps(ref)
         loss = 0
