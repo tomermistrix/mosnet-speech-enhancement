@@ -32,7 +32,7 @@ y, _ = sf.read(speech_path)
 # Feed to model and estimate MOS:
 with torch.no_grad():
     y_in = torch.from_numpy(y).unsqueeze(0).to(device)
-    avg_mos, mos_frames = mos_model(y_in)
+    mos_average, mos_per_frame = mos_model(y_in)
 
 ```
 
