@@ -11,12 +11,11 @@ Initialize the MOSNet model, load the pretrained weights and estimate MOS of a s
 ```python
 import numpy as np
 import torch
-import librosa
+import soundfile as sf
 from mosnet import MOSNet
 
 # Set some parameters:
 device = "cuda" if torch.cuda.is_available() else "cpu"
-sr = 16000
 
 # Set path of trained weights:
 weights_path = "mosnet16_torch.pt"
@@ -28,7 +27,7 @@ mos_model.eval()
 
 # Load audio sample and estimate MOS:
 speech_path = "sample.wav"
-y, _ = librosa.load(speech_path, sr=sr)
+y, _ = sf.read(speech_path)
 
 # Feed to model and estimate MOS:
 with torch.no_grad():
