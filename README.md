@@ -4,13 +4,61 @@ PyTorch implementation of our paper: [Differentiable Mean Opinion Score Regulari
 
 ## Usage
 
-Example how to initialize the MOSNet model, load the pretrained weights and estimate MOS ratings of some audio samples:
+### MOS Estimation
+
+Initialize the MOSNet model, load the pretrained weights and estimate MOS of a speech audio sample:
 
 ```python
+import numpy as np
+import torch
+import librosa
 from mosnet import MOSNet
 
+# Set some parameters:
+device = "cuda" if torch.cuda.is_available() else "cpu"
+sr = 16000
+
+# Set path of trained weights:
+weights_path = "mosnet16_torch.pt"
+
+# Initialize model and load weights:
+mos_model = MOSNet(device=device)
+mos_model.load_state_dict(torch.load(weights_path))
+mos_model.eval()
+
+# Load audio sample and estimate MOS:
+speech_path = "sample.wav"
+y, _ = librosa.load(speech_path, sr=sr)
+
+# Feed to model and estimate MOS:
+with torch.no_grad():
+    y_in = torch.from_numpy(y).unsqueeze(0).to(device)
+    avg_mos, mos_frames = mos_model(y_in)
 
 ```
+
+### Regularization for Speech Enhancement
+
+Initialize a criterion that can be employed into any deep-learning-based training framework:
+
+```python
+import torch
+from mosnet import MOSNetLoss
+
+# Set some parameters:
+device = "cuda" if torch.cuda.is_available() else "cpu"
+sr = 16000
+
+# Set path of trained weights:
+weights_path = "mosnet16_torch.pt"
+
+# Initialize criterion:
+criterion = MOSNetLoss(weights_path, device=device)
+```
+
+## Audio Samples
+
+Coming soon
 
 ## Citation
 
@@ -31,6 +79,4 @@ Please consider citing this work if you find it helpful in your research:
 ```
 
 
-[pytorch]: https://pytorch.org/
 [paper]: https://authors.elsevier.com/a/1gUxL_3qHiVA7n
-[dns]:https://github.com/microsoft/DNS-Challenge/blob/interspeech2020/master/
