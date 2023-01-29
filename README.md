@@ -1,6 +1,8 @@
 # Differentiable Mean Opinion Score Regularization for Perceptual Speech Enhancement
 
-PyTorch implementation of our paper: [Differentiable Mean Opinion Score Regularization for Perceptual Speech Enhancement][paper].
+PyTorch implementation of our paper:
+
+[Differentiable Mean Opinion Score Regularization for Perceptual Speech Enhancement][paper].
 
 ## Usage
 
