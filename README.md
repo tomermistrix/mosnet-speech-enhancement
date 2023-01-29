@@ -6,6 +6,15 @@ PyTorch implementation of our paper:
 
 ## Usage
 
+### Installation in Google Colab
+
+First, clone the repository in Google Colab notebook:
+
+```bash
+!git clone https://github.com/tomermistrix/mosnet-speech-enhancement.git
+%cd mosnet-speech-enhancement
+```
+
 ### MOS Estimation
 
 Initialize the MOSNet model, load the pretrained weights and estimate MOS of a speech audio sample sampled at 16kHz:
