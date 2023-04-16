@@ -88,4 +88,4 @@ Please consider citing this work if you find it helpful in your research:
 ```
 
 
-[paper]: https://authors.elsevier.com/a/1gUxL_3qHiVA7n
+[paper]: https://www.sciencedirect.com/science/article/abs/pii/S016786552300017X
